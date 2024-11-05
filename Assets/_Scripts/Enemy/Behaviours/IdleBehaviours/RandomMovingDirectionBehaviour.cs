@@ -26,15 +26,23 @@ public class RandomMovingDirectionBehaviour : IBehaviour
     {
         _currentMoveTime += Time.deltaTime;
 
-        if (_currentMoveTime >= _switchDirectionTime)
-        {
+        if (IsShouldChangeDirection())
             _currentDirection = GetRandomDirection();
-            _currentMoveTime = 0;
-        }
 
         _mover.ProcessMove(_currentDirection);
     }
 
+    private bool IsShouldChangeDirection()
+    {
+        if (_currentMoveTime >= _switchDirectionTime)
+        {
+            _currentMoveTime = 0;
+            return true;
+        }
+
+        return false;
+    }
+
     private Vector3 GetRandomDirection()
-    => new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        => new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
 }
