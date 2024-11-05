@@ -18,36 +18,34 @@ public class EnemySpawner : MonoBehaviour
     private IBehaviour _activeBehaviour;
     private IBehaviour _idleBehaviour;
 
-    private Enemy _enemy;
-
     private void Awake()
     {
         IsPatrolPointsNull();
 
         _enemyTarget = FindObjectOfType<Character>().transform;
 
-        _enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity, null);
+        Enemy enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity, null);
 
-        _enemyMover = new Mover(_enemy.transform, _enemy.Speed);
+        _enemyMover = new Mover(enemy.transform, enemy.Speed);
 
-        _activeBehaviour = GetActiveBehaviour();
-        _idleBehaviour = GetIdleBehaviour();
+        _activeBehaviour = GetActiveBehaviour(enemy);
+        _idleBehaviour = GetIdleBehaviour(enemy);
 
         //для удобства опознавания поведений врага
-        _enemy.name = _enemy.GetType().ToString() + _activeBehaviourEnum.ToString() + _idleBehaviourEnum.ToString(); 
+        enemy.name = enemy.GetType().ToString() + _activeBehaviourEnum.ToString() + _idleBehaviourEnum.ToString(); 
 
-        _enemy.Initialize(_activeBehaviour, _idleBehaviour);
+        enemy.Initialize(_activeBehaviour, _idleBehaviour);
     }
 
-    private IBehaviour GetActiveBehaviour()
+    private IBehaviour GetActiveBehaviour(Enemy enemy)
     {
         _activeBehaviour ??= _activeBehaviourEnum switch
         {
-            EnemyActiveBehaviours.Scared => new ScareBehaviour(_enemy.transform, _enemyMover, _enemyTarget),
+            EnemyActiveBehaviours.Scared => new ScareBehaviour(enemy.transform, _enemyMover, _enemyTarget),
 
-            EnemyActiveBehaviours.Chasing => new ChaseBehaviour(_enemy.transform, _enemyMover, _enemyTarget),
+            EnemyActiveBehaviours.Chasing => new ChaseBehaviour(enemy.transform, _enemyMover, _enemyTarget),
 
-            EnemyActiveBehaviours.Dying => new DyingBehaviour(_enemy, _enemyPrefab.DyinEffect),
+            EnemyActiveBehaviours.Dying => new DyingBehaviour(enemy, _enemyPrefab.DyinEffect),
 
             _ => throw new ArgumentException("Undefined behaviour"),
         };
@@ -55,13 +53,13 @@ public class EnemySpawner : MonoBehaviour
         return _activeBehaviour;
     }
 
-    private IBehaviour GetIdleBehaviour()
+    private IBehaviour GetIdleBehaviour(Enemy enemy)
     {
         _idleBehaviour ??= _idleBehaviourEnum switch
         {
             EnemyIdleBehaviours.Idle => new IdleBehaviour(),
 
-            EnemyIdleBehaviours.Patrol => new PatrolBehaviour(_enemyMover, _enemy.transform, _patrolPoints),
+            EnemyIdleBehaviours.Patrol => new PatrolBehaviour(_enemyMover, enemy.transform, _patrolPoints),
 
             EnemyIdleBehaviours.RandomPoints => new RandomMovingDirectionBehaviour(_enemyMover),
 
