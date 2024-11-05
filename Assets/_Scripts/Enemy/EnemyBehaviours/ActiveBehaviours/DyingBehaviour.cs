@@ -14,10 +14,16 @@ public class DyingBehaviour : IBehaviour
 
     public void Enter()
     {
+        //включается музыка, парткилы, подписки))
         Object.Instantiate(_dyingEffect, _enemy.transform.position, _enemy.transform.rotation, _enemy.transform.parent);
 
         Object.Destroy(_enemy.gameObject);
     }
 
     public void Update() { }
+
+    public void Exit()
+    {
+        //выключается музыка,партиклы, отписки))
+    }
 }

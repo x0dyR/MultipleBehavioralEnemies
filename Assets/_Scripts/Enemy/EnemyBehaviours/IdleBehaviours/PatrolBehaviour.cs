@@ -38,4 +38,9 @@ public class PatrolBehaviour : IBehaviour
 
         return nextPoint.transform;
     }
+
+    public void Exit()
+    {
+        //выключается музыка,партиклы, отписки))
+    }
 }

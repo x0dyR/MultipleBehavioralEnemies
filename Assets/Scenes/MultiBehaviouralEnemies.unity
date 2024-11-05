@@ -153,6 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
         type: 3}
+      propertyPath: _activeBehaviourEnum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
       propertyPath: _patrolPoints.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -424,6 +429,16 @@ PrefabInstance:
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
         type: 3}
       propertyPath: _activeBehaviour
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
+      propertyPath: _idleBehaviourEnum
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
+      propertyPath: _activeBehaviourEnum
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
@@ -977,6 +992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
         type: 3}
+      propertyPath: _idleBehaviourEnum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
       propertyPath: _patrolPoints.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1321,6 +1341,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
         type: 3}
+      propertyPath: _idleBehaviourEnum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
+      propertyPath: _activeBehaviourEnum
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
       propertyPath: _patrolPoints.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1503,6 +1533,11 @@ PrefabInstance:
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
         type: 3}
       propertyPath: _activeBehaviour
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,
+        type: 3}
+      propertyPath: _activeBehaviourEnum
       value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 3066224286772722384, guid: 84c893ecebf76da43a84334080e241f7,

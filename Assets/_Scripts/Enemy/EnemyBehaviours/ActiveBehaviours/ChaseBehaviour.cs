@@ -7,23 +7,31 @@ public class ChaseBehaviour : IBehaviour
     private Transform _transform;
     private Mover _mover;
 
-    private Character _character;
+    private Transform _target;
 
-    public ChaseBehaviour(Transform transform, Mover mover, Character character)
+    public ChaseBehaviour(Transform transform, Mover mover, Transform target)
     {
         _transform = transform;
         _mover = mover;
-        _character = character;
+        _target = target;
     }
 
-    public void Enter() { }
+    public void Enter()
+    {
+        //включается музыка, парткилы, подписки))
+    }
+
+    public void Exit()
+    {
+        //выключается музыка,партиклы, отписки))
+    }
 
     public void Update()
     {
-        if ((_character.transform.position - _transform.position).sqrMagnitude < MinimalDistance * MinimalDistance)
+        if ((_target.transform.position - _transform.position).sqrMagnitude < MinimalDistance * MinimalDistance)
             return;
 
-        Vector3 direction = _character.transform.position - _transform.position;
+        Vector3 direction = _target.transform.position - _transform.position;
         direction.y = 0;
         _mover.ProcessMove(direction);
     }

@@ -7,6 +7,9 @@ public class RandomMovingDirectionBehaviour : IBehaviour
     private float _switchDirectionTime = 1;
     private float _currentMoveTime;
 
+    private const int MaxRandomDirection = 1;
+    private const int MinRandomDirection = -1;
+
     private Mover _mover;
 
     public RandomMovingDirectionBehaviour(Mover mover)
@@ -14,6 +17,11 @@ public class RandomMovingDirectionBehaviour : IBehaviour
         _mover = mover;
 
         _currentDirection = GetRandomDirection();
+    }
+
+    public void Enter()
+    {
+        //включается музыка, парткилы, подписки))
     }
 
     public void Update()
@@ -26,7 +34,10 @@ public class RandomMovingDirectionBehaviour : IBehaviour
         _mover.ProcessMove(_currentDirection);
     }
 
-    public void Enter() { }
+    public void Exit()
+    {
+        //выключается музыка,партиклы, отписки))
+    }
 
     private bool IsShouldChangeDirection()
     {
@@ -40,5 +51,6 @@ public class RandomMovingDirectionBehaviour : IBehaviour
     }
 
     private Vector3 GetRandomDirection()
-        => new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+        => new Vector3(Random.Range(MinRandomDirection, MaxRandomDirection),
+            0, Random.Range(MinRandomDirection, MaxRandomDirection)).normalized;
 }
