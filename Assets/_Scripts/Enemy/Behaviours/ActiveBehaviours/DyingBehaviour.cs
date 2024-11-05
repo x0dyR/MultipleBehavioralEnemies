@@ -14,7 +14,7 @@ public class DyingBehaviour : IBehaviour
 
     public void Enter()
     {
-        _ = Object.Instantiate(_dyingEffect, _enemy.transform.position, _enemy.transform.rotation, _enemy.transform.parent);
+        Object.Instantiate(_dyingEffect, _enemy.transform.position, _enemy.transform.rotation, _enemy.transform.parent);
     }
 
     public void Update()

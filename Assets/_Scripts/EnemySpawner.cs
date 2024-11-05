@@ -19,4 +19,10 @@ public class EnemySpawner : MonoBehaviour
         Enemy enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity, null);
         enemy.Initialize(_activeBehaviour, _idleBehaviour, _patrolPoints);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawSphere(transform.position, .5f);
+    }
 }
