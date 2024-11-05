@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         _input = new InputSystem();
+
         _mover = new Mover(transform, _speed);
     }
 

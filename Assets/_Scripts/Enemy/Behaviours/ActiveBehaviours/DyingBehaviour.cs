@@ -15,8 +15,9 @@ public class DyingBehaviour : IBehaviour
     public void Enter()
     {
         Object.Instantiate(_dyingEffect, _enemy.transform.position, _enemy.transform.rotation, _enemy.transform.parent);
+
+        Object.Destroy(_enemy.gameObject);
     }
 
-    public void Update()
-        => Object.Destroy(_enemy.gameObject);
+    public void Update() { }
 }

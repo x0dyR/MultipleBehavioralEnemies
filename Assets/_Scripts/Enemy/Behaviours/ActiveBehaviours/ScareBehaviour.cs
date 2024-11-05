@@ -14,15 +14,12 @@ public class ScareBehaviour : IBehaviour
         _character = character;
     }
 
-    public void Enter()
-    {
-    }
+    public void Enter() { }
 
     public void Update()
     {
         Vector3 direction = _transform.position - _character.transform.position;
         direction.y = 0;
         _mover.ProcessMove(direction);
-
     }
 }

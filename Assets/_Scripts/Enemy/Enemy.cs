@@ -5,14 +5,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _dyingEffect;
-    [SerializeField] private string _currentBehaviourStr;
 
     private const float Speed = 3f;
 
     private EnemyActiveBehaviours _currentActiveBehaviour;
     private EnemyIdleBehaviours _currentIdleBehaviour;
 
-    private List<Transform> _patrolPoints;
+    private List<PatrolPoint> _patrolPoints;
 
     private IBehaviour _activeBehaviour;
     private IBehaviour _idleBehaviour;
@@ -21,12 +20,12 @@ public class Enemy : MonoBehaviour
 
     private Mover _mover;
 
-    public void Initialize(EnemyActiveBehaviours activeBehaviour, EnemyIdleBehaviours idleBehaviour, IEnumerable<Transform> patrolPoints)
+    public void Initialize(EnemyActiveBehaviours activeBehaviour, EnemyIdleBehaviours idleBehaviour, IEnumerable<PatrolPoint> patrolPoints)
     {
         _currentActiveBehaviour = activeBehaviour;
         _currentIdleBehaviour = idleBehaviour;
 
-        _patrolPoints = new List<Transform>(patrolPoints);
+        _patrolPoints = new List<PatrolPoint>(patrolPoints);
 
         _mover = new Mover(transform, Speed);
 
@@ -36,14 +35,13 @@ public class Enemy : MonoBehaviour
 
             EnemyIdleBehaviours.Patrol => new PatrolBehaviour(_mover, transform, _patrolPoints),
 
-            EnemyIdleBehaviours.RandomPoints => new RandomMovingDirectionBehaviour(_mover, transform),
+            EnemyIdleBehaviours.RandomPoints => new RandomMovingDirectionBehaviour(_mover),
 
             _ => throw new ArgumentException("Undefined behaviour"),
         };
 
         _currentBehaviour = _idleBehaviour;
-
-        _currentBehaviourStr = _currentIdleBehaviour.ToString();
+        _currentBehaviour.Enter();
     }
 
     private void Update()
@@ -68,8 +66,6 @@ public class Enemy : MonoBehaviour
 
             _currentBehaviour = _activeBehaviour;
             _currentBehaviour.Enter();
-
-            _currentBehaviourStr = _currentIdleBehaviour.ToString();
         }
     }
 

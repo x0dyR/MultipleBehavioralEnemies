@@ -16,10 +16,7 @@ public class ChaseBehaviour : IBehaviour
         _character = character;
     }
 
-    public void Enter()
-    {
-    
-    }
+    public void Enter() { }
 
     public void Update()
     {

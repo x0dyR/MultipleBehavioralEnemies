@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +8,19 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Enemy _enemyPrefab;
 
-    [SerializeField] private List<Transform> _patrolPoints;
+    [SerializeField] private List<PatrolPoint> _patrolPoints;
 
     private void Awake()
     {
-        if (_patrolPoints[0] == null)
-            throw new ArgumentException("No patrol points");
+        if (_patrolPoints.Count == 0 || _patrolPoints[0] == null)
+        {
+            _patrolPoints.Clear();
+
+            PatrolPoint[] patrolPoints = FindObjectsOfType<PatrolPoint>();
+
+            foreach (var patrolPoint in patrolPoints)
+                _patrolPoints.Add(patrolPoint);
+        }
 
         Enemy enemy = Instantiate(_enemyPrefab, transform.position, Quaternion.identity, null);
         enemy.Initialize(_activeBehaviour, _idleBehaviour, _patrolPoints);
