@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class RandomMovingDirectionBehaviour : IBehaviour
 {
-    private const float MinimalDistance = .1f;
-
     private Vector3 _currentDirection;
 
     private float _switchDirectionTime = 1;
