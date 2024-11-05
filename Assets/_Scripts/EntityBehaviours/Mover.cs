@@ -19,5 +19,6 @@ public class Mover
             return;
 
         _transform.position += _speed * Time.deltaTime * direction.normalized;
+        _transform.forward = direction;
     }
 }
