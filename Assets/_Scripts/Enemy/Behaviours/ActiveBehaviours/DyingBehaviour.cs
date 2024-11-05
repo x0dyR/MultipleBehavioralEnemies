@@ -12,9 +12,11 @@ public class DyingBehaviour : IBehaviour
         _dyingEffect = dyingEffect;
     }
 
-    public void Update()
+    public void Enter()
     {
-        //Object.Destroy(_enemy.gameObject, _dyingEffect.main.duration);
-        Object.Destroy(_enemy.gameObject, 1);
+        _ = Object.Instantiate(_dyingEffect, _enemy.transform.position, _enemy.transform.rotation, _enemy.transform.parent);
     }
+
+    public void Update()
+        => Object.Destroy(_enemy.gameObject);
 }

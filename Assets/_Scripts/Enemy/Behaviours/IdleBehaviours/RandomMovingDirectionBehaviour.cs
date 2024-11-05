@@ -45,4 +45,8 @@ public class RandomMovingDirectionBehaviour : IBehaviour
 
     private Vector3 GetRandomDirection()
         => new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+
+    public void Enter()
+    {
+    }
 }

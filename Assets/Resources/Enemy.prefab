@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f92eaee8e725754c9023a61ab70403b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentActiveBehaviour: 0
-  _currentIdleBehaviour: 0
-  _patrolPoints: []
+  _dyingEffect: {fileID: 3302442364004722509, guid: 77b3fe2aafc28fc4f911220a9e3a062d,
+    type: 3}
+  _currentBehaviourStr: 
 --- !u!135 &4844600217095227326
 SphereCollider:
   m_ObjectHideFlags: 0

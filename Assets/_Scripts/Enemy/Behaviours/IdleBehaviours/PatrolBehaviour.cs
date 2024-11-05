@@ -21,6 +21,9 @@ public class PatrolBehaviour : IBehaviour
         _currentPoint = NextPoint();
     }
 
+    public void Enter()
+    { }
+
     public void Update()
     {
         if ((_currentPoint.transform.position - _transform.position).sqrMagnitude < MinimalDistance * MinimalDistance)

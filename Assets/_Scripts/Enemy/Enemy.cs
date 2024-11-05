@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _dyingEffect;
+    [SerializeField] private string _currentBehaviourStr;
+
     private const float Speed = 3f;
 
     private EnemyActiveBehaviours _currentActiveBehaviour;
     private EnemyIdleBehaviours _currentIdleBehaviour;
 
     private List<Transform> _patrolPoints;
-
-    [SerializeField] private ParticleSystem _dyingEffect;
 
     private IBehaviour _activeBehaviour;
     private IBehaviour _idleBehaviour;
@@ -41,6 +42,8 @@ public class Enemy : MonoBehaviour
         };
 
         _currentBehaviour = _idleBehaviour;
+
+        _currentBehaviourStr = _currentIdleBehaviour.ToString();
     }
 
     private void Update()
@@ -64,13 +67,19 @@ public class Enemy : MonoBehaviour
             };
 
             _currentBehaviour = _activeBehaviour;
+            _currentBehaviour.Enter();
+
+            _currentBehaviourStr = _currentIdleBehaviour.ToString();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out Character _))
+        {
             _currentBehaviour = _idleBehaviour;
+            _currentBehaviour.Enter();
+        }
     }
 
     private void OnDrawGizmos()

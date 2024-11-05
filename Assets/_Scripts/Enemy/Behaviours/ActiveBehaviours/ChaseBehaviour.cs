@@ -16,11 +16,18 @@ public class ChaseBehaviour : IBehaviour
         _character = character;
     }
 
+    public void Enter()
+    {
+    
+    }
+
     public void Update()
     {
         if ((_character.transform.position - _transform.position).sqrMagnitude < MinimalDistance * MinimalDistance)
             return;
 
-        _mover.ProcessMove(_character.transform.position - _transform.position);
+        Vector3 direction = _character.transform.position - _transform.position;
+        direction.y = 0;
+        _mover.ProcessMove(direction);
     }
 }
